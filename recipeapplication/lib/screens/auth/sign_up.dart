@@ -18,6 +18,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     var width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: height,
         width: width,

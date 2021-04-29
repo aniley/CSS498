@@ -19,6 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
     var width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: height,
         width: width,
