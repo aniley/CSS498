@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:recipeapplication/utils/screen_size.dart';
 import 'package:recipeapplication/utils/styles.dart';
 
+// I am the Manager
+
 class RegisterScreen extends StatefulWidget {
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
