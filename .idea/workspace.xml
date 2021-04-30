@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbbbd4bd-4ed6-4f52-ba86-a80395627e5c" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recipeapplication/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/recipeapplication/android/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recipeapplication/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/recipeapplication/android/build.gradle" afterDir="false" />
@@ -29,6 +30,9 @@
       <change beforePath="$PROJECT_DIR$/recipeapplication/lib/screens/auth/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/recipeapplication/lib/screens/auth/login.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recipeapplication/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/recipeapplication/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recipeapplication/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/recipeapplication/pubspec.yaml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/recipeapplication/lib/screens/auth/sign_up.dart" beforeDir="false" afterPath="$PROJECT_DIR$/recipeapplication/lib/screens/auth/sign_up.dart" afterDir="false" />
+>>>>>>> 5cdb22b68957c03f238704be0185da0db732d357
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
