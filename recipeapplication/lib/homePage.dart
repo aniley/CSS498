@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:recipeapplication/Dashboard.dart';
+import 'package:recipeapplication/MenuScreen.dart';
 
-import 'Dashboard.dart';
-import 'MenuScreen.drt.dart';
 
-void main() {
-  runApp( Recipe());
-}
 
 class Recipe extends StatelessWidget {
   // This widget is the root of your application.

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:homepage/config.dart';
+import 'package:recipeapplication/config.dart';
 
 class Menu extends StatefulWidget {
   @override

@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:recipeapplication/screens/auth/login.dart';
 import 'package:recipeapplication/utils/screen_size.dart';
 import 'package:recipeapplication/utils/theme.dart';
+// Import the firebase_core plugin
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

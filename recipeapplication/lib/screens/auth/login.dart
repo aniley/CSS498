@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recipeapplication/screens/auth/sign_up.dart';
 import 'package:recipeapplication/utils/screen_size.dart';
 import 'package:recipeapplication/utils/styles.dart';
+import 'package:recipeapplication/homePage.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -107,6 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                             return null;
                           },
+
                         ),
                         SizedBox(
                           height: 40,
@@ -159,10 +161,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             5,
                           ),
                           child: MaterialButton(
-                            onPressed: () async {
-                              if (!_formKey.currentState.validate()) {
-                                return false;
-                              }
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Recipe()),
+                              );
                             },
                             child: Text(
                               'Sign In',
