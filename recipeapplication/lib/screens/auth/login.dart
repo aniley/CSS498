@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipeapplication/flutterServices/authenticate.dart';
 import 'package:recipeapplication/screens/auth/sign_up.dart';
 import 'package:recipeapplication/utils/screen_size.dart';
 import 'package:recipeapplication/utils/styles.dart';
@@ -10,6 +11,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final authenticate auth = authenticate();
   final TextEditingController _email = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool hidden = true;
@@ -108,7 +110,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                             return null;
                           },
-
                         ),
                         SizedBox(
                           height: 40,
@@ -162,10 +163,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           child: MaterialButton(
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => Recipe()),
-                              );
+                              if (_formKey.currentState.validate()) {
+                                signIn();
+                                return true;
+                              } else
+                                return false;
                             },
                             child: Text(
                               'Sign In',
@@ -204,5 +206,20 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void signIn() async {
+    dynamic user = await auth.logIn(_email.text, _pass.text);
+    if (user == null) {
+      print("Either email or password is incorrect");
+    } else {
+      print(user.toString());
+      _email.clear();
+      _pass.clear();
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Recipe()),
+      );
+    }
   }
 }

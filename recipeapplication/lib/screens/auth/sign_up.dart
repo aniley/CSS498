@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipeapplication/flutterServices/authenticate.dart';
 import 'package:recipeapplication/utils/screen_size.dart';
 import 'package:recipeapplication/utils/styles.dart';
 
@@ -10,6 +11,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final authenticate auth = authenticate();
   final TextEditingController _email = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool hidden = true;
@@ -142,9 +144,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           child: MaterialButton(
                             onPressed: () async {
-                              if (!_formKey.currentState.validate()) {
+                              if (_formKey.currentState.validate()) {
+                                createMember();
+                              } else
                                 return false;
-                              }
                             },
                             child: Text(
                               'Continue',
@@ -193,5 +196,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       ),
     );
+  }
+
+  void createMember() async {
+    dynamic user = await auth.createMember(_email.text, _pass.text);
+    if (user == null) {
+      print("Did not create the member");
+    } else {
+      print(user.toString());
+      _email.clear();
+      _pass.clear();
+      Navigator.pop(context);
+    }
   }
 }
