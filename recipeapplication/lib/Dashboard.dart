@@ -53,33 +53,35 @@ class _State extends State<HomeDash> {
         SizedBox(
           height: 50,
         ),
-        Container(
-            margin: EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              children: [
-                isOpen
-                    ? IconButton(
-                        icon: Icon(Icons.arrow_back_ios),
-                        onPressed: () {
-                          setState(() {
-                            xOffSet = 0;
-                            yOffSet = 0;
-                            scale = 1;
-                            isOpen = false;
-                          });
-                        })
-                    : IconButton(
-                        icon: Icon(Icons.menu),
-                        onPressed: () {
-                          setState(() {
-                            xOffSet = 230;
-                            yOffSet = 150;
-                            scale = 0.6;
-                            isOpen = true;
-                          });
-                        })
-              ],
-            )),
+        SingleChildScrollView(
+          child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                children: [
+                  isOpen
+                      ? IconButton(
+                          icon: Icon(Icons.arrow_back_ios),
+                          onPressed: () {
+                            setState(() {
+                              xOffSet = 0;
+                              yOffSet = 0;
+                              scale = 1;
+                              isOpen = false;
+                            });
+                          })
+                      : IconButton(
+                          icon: Icon(Icons.menu),
+                          onPressed: () {
+                            setState(() {
+                              xOffSet = 230;
+                              yOffSet = 150;
+                              scale = 0.6;
+                              isOpen = true;
+                            });
+                          })
+                ],
+              )),
+        ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           margin: EdgeInsets.symmetric(vertical: 30),
@@ -98,26 +100,7 @@ class _State extends State<HomeDash> {
               ),
               InkWell(
                   onTap: () async {
-                    if (recipedSearch.text.isNotEmpty) {
-                      setState(() {
-                        loading = true;
-                      });
-                      allRecipees = <Model>[];
-                      String base =
-                          "https://api.edamam.com/search?q=$recipedSearch&app_id=$applicationID&app_key=$applicationKey";
-                      var url = await Uri.parse(base);
-                      var result = await http.get(url);
-
-                      Map<String, dynamic> data = await jsonDecode(result.body);
-                      data["hits"].forEach((element) {
-                        Model newRecipe = new Model();
-                        newRecipe = Model.fromMap(element['recipe']);
-                        allRecipees.add(newRecipe);
-                      });
-                      setState(() {
-                        loading = false;
-                      });
-                    }
+                    getRecipees(recipedSearch.text);
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -143,24 +126,22 @@ class _State extends State<HomeDash> {
         SizedBox(
           height: 50,
         ),
-        SingleChildScrollView(
-          child: Container(
-            child: GridView(
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200, mainAxisSpacing: 10.0),
-              physics: ClampingScrollPhysics(),
-              children: List.generate(allRecipees.length, (index) {
-                return GridTile(
-                    child: recipeView(
-                  title: allRecipees[index].label,
-                  imgUrl: allRecipees[index].image,
-                  desc: allRecipees[index].source,
-                  url: allRecipees[index].url,
-                ));
-              }),
-            ),
+        Container(
+          child: GridView(
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 200, mainAxisSpacing: 10.0),
+            physics: ClampingScrollPhysics(),
+            children: List.generate(allRecipees.length, (index) {
+              return GridTile(
+                  child: recipeView(
+                title: allRecipees[index].label,
+                imgUrl: allRecipees[index].image,
+                desc: allRecipees[index].source,
+                url: allRecipees[index].url,
+              ));
+            }),
           ),
         )
       ]),
