@@ -4,6 +4,7 @@ import 'package:recipeapplication/screens/auth/sign_up.dart';
 import 'package:recipeapplication/utils/screen_size.dart';
 import 'package:recipeapplication/utils/styles.dart';
 import 'package:recipeapplication/homePage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final authenticate auth = authenticate();
+  final AuthentificationFuncs _auth = AuthentificationFuncs();
   final TextEditingController _email = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool hidden = true;
@@ -162,9 +163,22 @@ class _LoginScreenState extends State<LoginScreen> {
                             5,
                           ),
                           child: MaterialButton(
-                            onPressed: () {
+                            onPressed: () async {
                               if (_formKey.currentState.validate()) {
-                                signIn();
+                                // signIn();
+                                // _auth.createMember()
+                                 User user = await _auth.logIn(_email.text, _pass.text);
+                                  if (user == null) {
+                                    print("Either email or password is incorrect");
+                                  } else {
+                                    print(user.toString());
+                                    _email.clear();
+                                    _pass.clear();
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => Recipe()),
+                                    );
+                                  }
                                 return true;
                               } else
                                 return false;
@@ -208,18 +222,18 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void signIn() async {
-    dynamic user = await auth.logIn(_email.text, _pass.text);
-    if (user == null) {
-      print("Either email or password is incorrect");
-    } else {
-      print(user.toString());
-      _email.clear();
-      _pass.clear();
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => Recipe()),
-      );
-    }
-  }
+  // void signIn() async {
+  //   dynamic user = await auth.logIn(_email.text, _pass.text);
+  //   if (user == null) {
+  //     print("Either email or password is incorrect");
+  //   } else {
+  //     print(user.toString());
+  //     _email.clear();
+  //     _pass.clear();
+  //     Navigator.push(
+  //       context,
+  //       MaterialPageRoute(builder: (context) => Recipe()),
+  //     );
+  //   }
+  // }
 }

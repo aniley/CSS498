@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "717180935561",
-    "project_id": "recipeapp-e3434",
-    "storage_bucket": "recipeapp-e3434.appspot.com"
+    "project_number": "492069488521",
+    "project_id": "recipeapplication-8ca90",
+    "storage_bucket": "recipeapplication-8ca90.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:717180935561:android:7c519d2345d0f234245558",
+        "mobilesdk_app_id": "1:492069488521:android:905978432f3a6531b80358",
         "android_client_info": {
           "package_name": "ahmedkhan.example.recipeapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "717180935561-jbsttg7tfqm5jo7ugnlojjav0iis7nr3.apps.googleusercontent.com",
+          "client_id": "492069488521-0fb74p0pu5poouvusaf19j5i620c1egg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBzi9msFklEXMyH6nvgG5J3jAxYEdsC6Fk"
+          "current_key": "AIzaSyAFnHU_uUlGKvWVjoOO_I0Wf0HVD20_ZDQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "717180935561-jbsttg7tfqm5jo7ugnlojjav0iis7nr3.apps.googleusercontent.com",
+              "client_id": "492069488521-0fb74p0pu5poouvusaf19j5i620c1egg.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "492069488521-kcpmu4e7st0pp06rfvn0dtunc8m4nvkr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ahmedkhan.example.recipeapplication"
+              }
             }
           ]
         }

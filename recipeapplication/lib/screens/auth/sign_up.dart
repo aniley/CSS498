@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:recipeapplication/flutterServices/authenticate.dart';
 import 'package:recipeapplication/utils/screen_size.dart';
 import 'package:recipeapplication/utils/styles.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:recipeapplication/homePage.dart';
 
 // I am the Manager
 
@@ -11,7 +13,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final authenticate auth = authenticate();
+ final AuthentificationFuncs _auth = AuthentificationFuncs();
   final TextEditingController _email = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool hidden = true;
@@ -144,8 +146,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           child: MaterialButton(
                             onPressed: () async {
-                              if (_formKey.currentState.validate()) {
-                                createMember();
+                              if (_formKey.currentState.validate())  {
+                                  User user = await _auth.createMember(_email.text, _pass.text);
+                                  if (user == null) {
+                                    print("Couldnt register a member");
+                                  } else {
+                                    print(user.toString());
+                                    _email.clear();
+                                    _pass.clear();
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => Recipe()),
+                                    );
+                                  }
                               } else
                                 return false;
                             },
@@ -198,15 +211,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  void createMember() async {
-    dynamic user = await auth.createMember(_email.text, _pass.text);
-    if (user == null) {
-      print("Did not create the member");
-    } else {
-      print(user.toString());
-      _email.clear();
-      _pass.clear();
-      Navigator.pop(context);
-    }
-  }
+  // void createMember() async {
+  //   dynamic user = await auth.createMember(_email.text, _pass.text);
+  //   if (user == null) {
+  //     print("Did not create the member");
+  //   } else {
+  //     print(user.toString());
+  //     _email.clear();
+  //     _pass.clear();
+  //     Navigator.pop(context);
+  //   }
+  // }
 }

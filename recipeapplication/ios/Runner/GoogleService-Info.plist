@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>717180935561-nv3odg03dk976ets278rg2h8l55jgada.apps.googleusercontent.com</string>
+	<string>492069488521-kcpmu4e7st0pp06rfvn0dtunc8m4nvkr.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.717180935561-nv3odg03dk976ets278rg2h8l55jgada</string>
+	<string>com.googleusercontent.apps.492069488521-kcpmu4e7st0pp06rfvn0dtunc8m4nvkr</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDhIA98w7AkVyxLlZ07cMVE9lM71_NYvtc</string>
+	<string>AIzaSyAAviunSp1gx2fQoz9o7jErPFGtVZopoFw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>717180935561</string>
+	<string>492069488521</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>ahmedkhan.example.recipeapplication</string>
 	<key>PROJECT_ID</key>
-	<string>recipeapp-e3434</string>
+	<string>recipeapplication-8ca90</string>
 	<key>STORAGE_BUCKET</key>
-	<string>recipeapp-e3434.appspot.com</string>
+	<string>recipeapplication-8ca90.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:717180935561:ios:97e6651e5100602e245558</string>
+	<string>1:492069488521:ios:2772c861eb7e7a9eb80358</string>
 </dict>
 </plist>
