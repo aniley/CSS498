@@ -39,112 +39,117 @@ class _State extends State<HomeDash> {
     });
 
     print("$allRecipees.toString()");
+    // REFRESHES STATE OF THE WIDGET SO IT CAN SHOW NEW THINGS
+    setState(() {
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 250),
-      transform: Matrix4.translationValues(xOffSet, yOffSet, 0)
-        ..scale(scale)
-        ..rotateY(isOpen ? -0.5 : 0.0),
-      color: Colors.white,
-      child: Column(children: [
-        SizedBox(
-          height: 50,
-        ),
-        SingleChildScrollView(
-          child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  isOpen
-                      ? IconButton(
-                          icon: Icon(Icons.arrow_back_ios),
-                          onPressed: () {
-                            setState(() {
-                              xOffSet = 0;
-                              yOffSet = 0;
-                              scale = 1;
-                              isOpen = false;
-                            });
-                          })
-                      : IconButton(
-                          icon: Icon(Icons.menu),
-                          onPressed: () {
-                            setState(() {
-                              xOffSet = 230;
-                              yOffSet = 150;
-                              scale = 0.6;
-                              isOpen = true;
-                            });
-                          })
-                ],
-              )),
-        ),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          margin: EdgeInsets.symmetric(vertical: 30),
-          decoration: BoxDecoration(
-              color: Colors.red, borderRadius: BorderRadius.circular(20)),
-          child: Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  controller: recipedSearch,
-                  decoration: InputDecoration(hintText: "search recipe"),
+    return SingleChildScrollView(
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 250),
+        transform: Matrix4.translationValues(xOffSet, yOffSet, 0)
+          ..scale(scale)
+          ..rotateY(isOpen ? -0.5 : 0.0),
+        color: Colors.white,
+        child: Column(children: [
+          SizedBox(
+            height: 50,
+          ),
+          SingleChildScrollView(
+            child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  children: [
+                    isOpen
+                        ? IconButton(
+                            icon: Icon(Icons.arrow_back_ios),
+                            onPressed: () {
+                              setState(() {
+                                xOffSet = 0;
+                                yOffSet = 0;
+                                scale = 1;
+                                isOpen = false;
+                              });
+                            })
+                        : IconButton(
+                            icon: Icon(Icons.menu),
+                            onPressed: () {
+                              setState(() {
+                                xOffSet = 230;
+                                yOffSet = 150;
+                                scale = 0.6;
+                                isOpen = true;
+                              });
+                            })
+                  ],
+                )),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            margin: EdgeInsets.symmetric(vertical: 30),
+            decoration: BoxDecoration(
+                color: Colors.red, borderRadius: BorderRadius.circular(20)),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: recipedSearch,
+                    decoration: InputDecoration(hintText: "search recipe"),
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: 16,
-              ),
-              InkWell(
-                  onTap: () async {
-                    getRecipees(recipedSearch.text);
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        gradient: LinearGradient(
-                            colors: [
-                              const Color(0xffA2834D),
-                              const Color(0xffBC9A5F)
-                            ],
-                            begin: FractionalOffset.topRight,
-                            end: FractionalOffset.bottomLeft)),
-                    padding: EdgeInsets.all(8),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(Icons.search, size: 18, color: Colors.white),
-                      ],
-                    ),
-                  )),
-            ],
+                SizedBox(
+                  width: 16,
+                ),
+                InkWell(
+                    onTap: () async {
+                      getRecipees(recipedSearch.text);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          gradient: LinearGradient(
+                              colors: [
+                                const Color(0xffA2834D),
+                                const Color(0xffBC9A5F)
+                              ],
+                              begin: FractionalOffset.topRight,
+                              end: FractionalOffset.bottomLeft)),
+                      padding: EdgeInsets.all(8),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Icon(Icons.search, size: 18, color: Colors.white),
+                        ],
+                      ),
+                    )),
+              ],
+            ),
           ),
-        ),
-        SizedBox(
-          height: 50,
-        ),
-        Container(
-          child: GridView(
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200, mainAxisSpacing: 10.0),
-            physics: ClampingScrollPhysics(),
-            children: List.generate(allRecipees.length, (index) {
-              return GridTile(
-                  child: recipeView(
-                title: allRecipees[index].label,
-                imgUrl: allRecipees[index].image,
-                desc: allRecipees[index].source,
-                url: allRecipees[index].url,
-              ));
-            }),
+          SizedBox(
+            height: 50,
           ),
-        )
-      ]),
+          Container(
+            child: GridView(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200, mainAxisSpacing: 10.0),
+              physics: ClampingScrollPhysics(),
+              children: List.generate(allRecipees.length, (index) {
+                return GridTile(
+                    child: recipeView(
+                  title: allRecipees[index].label,
+                  imgUrl: allRecipees[index].image,
+                  desc: allRecipees[index].source,
+                  url: allRecipees[index].url,
+                ));
+              }),
+            ),
+          )
+        ]),
+      ),
     );
   }
 }
