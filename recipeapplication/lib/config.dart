@@ -5,13 +5,7 @@ List<BoxShadow> shadowList = [
   BoxShadow(color: Colors.grey[300], blurRadius: 30, offset: Offset(0, 10))
 ];
 
-List<Map> drawerItems=[
-  {
-    'icon': Icons.favorite,
-    'title' : 'Favorites'
-  },
-  {
-    'icon': Icons.settings,
-    'title' : 'Settings'
-  },
+List<Map> drawerItems = [
+  {'icon': Icons.favorite, 'title': 'Favorites'},
+  {'icon': Icons.food_bank, 'title': 'Meals for the Day'},
 ];

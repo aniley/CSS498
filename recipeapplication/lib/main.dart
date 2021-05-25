@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipeapplication/homePage.dart';
 import 'package:recipeapplication/screens/auth/login.dart';
 import 'package:recipeapplication/utils/screen_size.dart';
 import 'package:recipeapplication/utils/theme.dart';
@@ -22,10 +23,9 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           theme: themeData,
           debugShowCheckedModeBanner: false,
-          home: LoginScreen(),
+          home: HomePage(),
         );
       });
     });
   }
 }
-

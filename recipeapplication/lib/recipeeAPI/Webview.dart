@@ -33,32 +33,42 @@ class _RecipeViewState extends State<RecipeView> {
         body: Container(
       child: Column(
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(
-                top: Platform.isIOS ? 60 : 30, right: 24, left: 24, bottom: 16),
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [const Color(0xff213A50), const Color(0xff071930)],
-                    begin: FractionalOffset.topRight,
-                    end: FractionalOffset.bottomLeft)),
-            child: Row(
-              mainAxisAlignment:
-                  kIsWeb ? MainAxisAlignment.start : MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  "All",
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                      fontFamily: 'Overpass'),
-                ),
-                Text(
-                  "Recipees",
-                  style: TextStyle(
-                      fontSize: 18, color: Colors.blue, fontFamily: 'Overpass'),
-                )
-              ],
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.only(
+                  top: Platform.isIOS ? 60 : 30,
+                  right: 24,
+                  left: 24,
+                  bottom: 16),
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [
+                    const Color(0xff213A50),
+                    const Color(0xff071930)
+                  ],
+                      begin: FractionalOffset.topRight,
+                      end: FractionalOffset.bottomLeft)),
+              child: Row(
+                mainAxisAlignment:
+                    kIsWeb ? MainAxisAlignment.start : MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    "All",
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontFamily: 'Overpass'),
+                  ),
+                  Text(
+                    "Recipees",
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.blue,
+                        fontFamily: 'Overpass'),
+                  )
+                ],
+              ),
             ),
           ),
           Container(
