@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipeapplication/config.dart';
+import 'package:recipeapplication/screens/auth/login.dart';
 
 class Menu extends StatefulWidget {
   @override
@@ -17,9 +18,19 @@ class _MenuState extends State<Menu> {
           children: [
             Row(
               children: [
-                Icon(
-                  Icons.login,
-                  color: Colors.white,
+                Container(
+                  child: InkWell(
+                    onTap: () async {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                      );
+                    },
+                    child: Icon(
+                      Icons.login,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
                 SizedBox(
                   width: 10,
@@ -27,10 +38,19 @@ class _MenuState extends State<Menu> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Sign In",
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                    InkWell(
+                      onTap: () async {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()),
+                        );
+                      },
+                      child: Text(
+                        "Sign In",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
                     )
                   ],
                 )
